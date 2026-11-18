@@ -1,11 +1,11 @@
 # texts for problems
-author = "darida udens" # author name
-title = "Uzdevumi" # title of document
+author = "Cory Sherb" # author name
+title = "Practice Problems" # title of document
 
-equationText = "Atrisini vienādojumu." # text for solving equations
-factorizeText = "Sadali izteiksmi reizinātājos." # text for factorizing an expression
-drawGraphText = "Uzzīmē funkcijas grafiku." # text for drawing the graph of a function
-simplifyFracText = "Saīsini doto daļu." # text for simplifying a fraction
+equationText = "Solve these equations." # text for solving equations
+factorizeText = "Factor these equations." # text for factorizing an expression
+drawGraphText = "Draw the graph of each function." # text for drawing the graph of a function
+simplifyFracText = "Simplify each feaction" # text for simplifying a fraction
 
 # LaTeX settings
 language = "latvian" # language for LaTeX babel package
@@ -14,7 +14,6 @@ language = "latvian" # language for LaTeX babel package
 beginning = r"""
 \documentclass[12pt]{article}
 \usepackage{enumitem}
-\usepackage[""" + language + r"""]{babel}
  
 \setlength\parindent{0pt}
 \author{""" + author + r"""}

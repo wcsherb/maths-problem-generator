@@ -3,3 +3,5 @@ __pycache__/
 problem_set.tex
 my_input.py
 unfinished.py
+.Rproj.user
+.Rhistory
