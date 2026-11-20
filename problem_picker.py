@@ -33,13 +33,20 @@ def generateProblems(n, type):
         case "simplify fraction":
             problemText = simplifyFracText
             problemFunction = mathematics.simplifyFracEx
+        case "improper fraction":
+            problemText = simplifyFracText
+            problemFunction = mathematics.improper_fraction
+        case "mixed number":
+            problemText = equationText + " " + simplifyFracText
+            problemFunction = mathematics.mixed_number
 
-    string = r"        \item " + problemText + "\n"
-    string = string + r"    \begin{enumerate}" + "\n"
+    string = problemText + "\n"
 
     # write n number of problems
     for i in range(n):
-        string = string + r"        \item $" + problemFunction() +"$" "\n"
+        string = string + r"        \[" + problemFunction() + r"\]" + "\n"
+        string = string + r"        \vspace{4cm}" + "\n"
+    
+    string = string + r"\newpage" + "\n"
 
-    string = string + r"    \end{enumerate}" + "\n"
     return string
