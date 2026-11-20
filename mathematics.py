@@ -1,4 +1,5 @@
 import random
+import math
 from sympy import sin, cos, symbols, Rational, latex, expand, sqrt, pi, expand, simplify, UnevaluatedExpr
 
 x, y = symbols('x y')
@@ -43,9 +44,54 @@ def improper_fraction():
   return ex
 
 
+def sort_fractions():
+  
+  min_frac = 1/8
+  denom_list = list(range(2,13))
+  bin_list = [(min_frac, 0.25), (0.25, 0.5), (0.5, 0.75), (0.75, 1), (1, 2)]
+  
+  def get_frac(this_bin):
+    # Get the denominator
+    denom = random.sample(denom_list, 1)
+    denom = denom[0]
+    # Make sure the fraction is not outside the range
+    while 1/denom > this_bin[1]:
+      denom = denom + 1
+    # Set the range according to the denominator
+    min_range = this_bin[0] * denom
+    min_range = math.ceil(min_range)
+    max_range = this_bin[1] * denom
+    max_range = math.floor(max_range)
+    
+    numerator = random.randint(min_range, max_range)
+    
+    return numerator, denom
+  
+  n_per_list = [1,1,2]
+  frac_list = []
+  # Generate a few fractions per bin
+  for this_bin in bin_list:
+    # How many factions for this bin
+    n_per = random.sample(n_per_list, 1)
+    n_per = n_per[0]
+    frac_list.append(get_frac(this_bin))
+    # Add fractions as necessary
+    while len(frac_list) < n_per:
+      frac_list.append(get_frac(this_bin))
+  
+  # Unique fractions
+  frac_list = list(set(frac_list))
+  random.shuffle(frac_list)
+  
+  frac_list = [r"\frac{" + str(x[0]) + "}{" + str(x[1]) + "}" for x in frac_list]
+  string = r"\{" + ", ".join(frac_list) + r"\}"
+  
+  return string
+
+
 def mixed_number():
   
-  same_denom = [True, False]
+  same_denom = [True, False, False]
   same_denom = random.sample(same_denom, 1)
   same_denom = same_denom[0]
   

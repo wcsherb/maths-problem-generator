@@ -1,31 +1,24 @@
-# texts for problems
-title = "Practice Problems" # title of document
 
-equationText = "Solve these equations." # text for solving equations
-factorizeText = "Factor these equations." # text for factorizing an expression
-drawGraphText = "Draw the graph of each function." # text for drawing the graph of a function
-simplifyFracText = "Simplify each fraction." # text for simplifying a fraction
-
-# LaTeX settings
-language = "latvian" # language for LaTeX babel package
-
-# necessary text
-beginning = r"""
-\documentclass[12pt,fleqn]{article}
-\usepackage{amsmath,scalerel}
- 
-\setlength\parindent{0pt}
-\setlength{\mathindent}{0pt}
-\date{\today}
-
-\begin{document}
-"""
-end = r"""
-\end{document}
-"""
 # function for writing the tex document
-def writeTex(problems):
-    with open("problem_set.tex","w", encoding="utf-8") as file:
+def writeTex(problems, file_name):
+    
+    # Beginning and ending text
+    beginning = r"""
+    \documentclass[12pt, fleqn, leqno]{article}
+    \usepackage{amsmath, fancyhdr}
+    \pagestyle{fancy}
+    \fancyhf{}
+    \setlength{\headheight}{14.5pt}
+    \addtolength{\topmargin}{-2.5pt}
+    \lhead{\leftmark}
+    
+    \begin{document}
+    """
+    
+    end = r"""
+    \end{document}
+    """
+    with open(file_name,"w", encoding="utf-8") as file:
         file.write(beginning)
         file.write(problems)
         file.write(end)
